@@ -9,7 +9,7 @@ public class Item {
     @Column(length = 200)
     public String title;
     public Integer price;
-    public void setprice(int price) {
+    public void setprice(Integer price) {
         if (price < 0 || price >= 100)
             return;
         this.price = price;

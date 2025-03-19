@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import com.example.demo.Entity.Item;
 import com.example.demo.Repository.ItemRepository;
@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
 public class ItemsController {
+
     private final ItemRepository itemRepository;
+
     @GetMapping("/item")
     public String item(Model model) {
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
         return "items.html";
     }
+
     @PostMapping("/add")
     String writePost(@ModelAttribute Item item) {
         itemRepository.save(item);
